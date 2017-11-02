@@ -12,13 +12,13 @@ This project is writing with Vue(Vue-router and Element-Ui).
 
 ## Build Setup
 
-# install dependencies
+### install dependencies
 npm install
 
-# serve with hot reload at localhost:8080
+### serve with hot reload at localhost:8080
 npm run dev
 
-# install Element
+### install Element
 npm i element-ui@legacy -S
 ```
 
