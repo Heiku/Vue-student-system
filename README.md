@@ -4,10 +4,10 @@
 This project is writing with Vue(Vue-router and Element-Ui).
 
 
-# About
+## About
 这个项目是根据学校的管理系统进行改造编写，是初学Vue的练手项目。
 
-# 技术
+## 技术
 [Vue](https://cn.vuejs.org/) And [Element](http://element-cn.eleme.io/1.4/#/zh-CN/component/installation)
 
 ## Build Setup
