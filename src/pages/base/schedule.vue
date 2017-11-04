@@ -8,44 +8,44 @@
         </div>
 
         <div class="weclome">
-            <el-row class="select-date">
-                <el-col :span="6">学 年：
-                    <el-select v-model="valueYear" placeholder="学 年">
+            <el-form :inline="true" :model="selectSchedule" class="select-date">
+                <el-form-item label="学 年：">
+                    <el-select v-model="selectSchedule.valueYear" placeholder="学 年">
                         <el-option v-for="item in year"
                                 :key="item.value"
                                 :label="item.label"
                                 :value="item.value">
                         </el-option>
                     </el-select>
-                </el-col>
+                </el-form-item>
 
-                <el-col :span="6">学 期：
-                    <el-select v-model="valueSemester" placeholder="学 期">
+                <el-form-item label="学 期：">
+                    <el-select v-model="selectSchedule.valueSemester" placeholder="学 期">
                         <el-option v-for="item in semester"
                                 :key="item.value"
                                 :label="item.label"
                                 :value="item.value">
                         </el-option>
                     </el-select>
-                </el-col>
+                </el-form-item>
 
-                <el-col :span="6">周 数：
-                    <el-select v-model="valueWeek" placeholder="周 数">
+                <el-form-item label="周 数：">
+                    <el-select v-model="selectSchedule.valueWeek" placeholder="周 数">
                         <el-option v-for="item in week"
                                 :key="item.value"
                                 :label="item.label"
                                 :value="item.value">
                         </el-option>
                     </el-select>
-                </el-col>
+                </el-form-item>
 
-                <el-col :span="6" >
-                    <el-button type="primary" icon="search">搜索</el-button>
-                </el-col>
-            </el-row>
+                <el-form-item>
+                    <el-button icon="search" @click="onSubmit" type="primary">查询</el-button>
+                </el-form-item>
+            </el-form>
 
             <el-card class="box-class-schedule">
-                <h3>{{ valueYear }}-{{ valueYear+1 }} {{ getSemester(valueSemester) }} 上课时间表</h3>
+                <h3>{{ selectSchedule.valueYear }}-{{ selectSchedule.valueYear+1 }} {{ getSemester(selectSchedule.valueSemester) }} 上课时间表</h3>
 
                 <!-- <el-table :data="scheduleData" border="true">
                     <el-table-column prop="time" label="上课时间" width="180"></el-table-column>
@@ -189,6 +189,11 @@
     export default{
         data () {
             return {
+                selectSchedule: {
+                    valueYear: 2017,
+                    valueSemester: 1,
+                    valueWeek: 1
+                },
                 year: [
                     {
                         value: 2015,
@@ -203,8 +208,6 @@
                         label: '2017'
                     }
                 ],
-                valueYear: 2017,
-
                 semester: [
                     {
                         value: 1,
@@ -215,8 +218,6 @@
                         label: '第二学期'
                     }
                 ],
-                valueSemester: 1,
-
                 week: [
                     {
                         value: 1,
@@ -255,7 +256,6 @@
                         label: '第九周'
                     }
                 ],
-                valueWeek: 1
             }
         },
         methods: {
@@ -266,6 +266,9 @@
                     return '第二学期'
                 }
             },
+            onSubmit(){
+                console.log(this.selectSchedule)
+            }
         },
         mounted() {
             //this.createWeekarray()
@@ -281,7 +284,7 @@
     }
 
     .box-class-schedule{
-        margin: 30px 20px 0px 20px;
+        margin: 10px 20px 0px 20px;
     }
 
     h3{
